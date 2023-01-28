@@ -6,8 +6,10 @@ var countries = ["recent answer 1", "recent answer 2", "test answer"];
 function switchvisibility(x) {
   if (x.style.visibility == "visible") {
     x.style.visibility = "hidden";
+    x.style.display = "none";
   } else {
     x.style.visibility = "visible";
+    x.style.display = "block";
   }
 }
 
