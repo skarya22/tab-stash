@@ -64,8 +64,12 @@
             <text>the answer would be shown here</text>
         </div>
 
-        <input id="question" placeholder="Type..."></input>
-
+        <div class="input-group mb-3">
+            <input type="text" id="question" class="form-control" placeholder="Enter your question here" aria-label="Question" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">Enter</button>
+            </div>
+          </div>
         <div>
             <button class="btn btn-primary" id="savehighlighted">
                 Save Highlighted
