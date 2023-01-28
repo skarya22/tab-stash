@@ -7,5 +7,4 @@
 //     document.getElementById("deathNew").innerHTML=record.data[0].deathNew;
 // }
 // fetchData();
-
-document.getElementById('summaryanswer').style.visibility = false;
+console.log("hi");
