@@ -27,13 +27,36 @@
         'opsz' 48
 }
 
-#summaryanswer {
-    color: white;
-    visibility: "hidden";
-    margin: 10px 0;
+#summaryanswer-input {
+    color: lightgray;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: transparent;
+    width: 100%;
+    height: 150px;
+}
+
+#label-input-container {
+    visibility: hidden;
+    display: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    border-radius: 3px;
+    width: 60%;
+}
+
+#label-input {
+    color: lightgray;
+    padding: 10px;
+    background-color: transparent;
+    width: 100%;
+    outline-width: 0px;
+}
+
+*:focus {
+    outline: none;
 }
 
 /* Tooltip container */

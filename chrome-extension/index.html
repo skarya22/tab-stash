@@ -36,16 +36,6 @@
             </svg>
 
             <div style="margin: auto 0; ">
-                <!-- Archive / Stash -->
-                <div class="tooltip2">
-                    <span class="material-symbols-outlined"
-                        style="color: white; font-size: 30px; color: #f33535; margin-right: 10px">
-                        archive
-                    </span>
-                    <span class="tooltiptext2">Stash this page</span>
-                </div>
-
-
                 <!-- User Icon -->
                 <span class="material-symbols-outlined" style="color: white; font-size: 30px; color: #f33535">
                     account_circle
@@ -54,14 +44,29 @@
 
             </div>
         </div>
-        <button class="btn btn-light horizontal text-center tooltiptext" id="summarize"
-            style="flex:all; flex-direction: row;">
-            <div>Summarize Page</div>
-        </button>
 
+        <div class="d-flex justify-content-between" style="margin-bottom: 10px;">
+            <button class="btn btn-light horizontal text-center tooltiptext" id="summarize"
+                style="flex:all; flex-direction: row; height: 40px;">
+                <div>Summarize Page</div>
+            </button>
+
+            <div class="d-flex justify-content-between" id="label-input-container">
+                <!-- Invisible Input -->
+                <input id="label-input" placeholder="Add label(s)..."></input>
+                <!-- Stash result button -->
+                <div class="tooltip2" style="margin-top: 5px; margin-right: 5px">
+                    <span class="material-symbols-outlined"
+                        style="color: white; font-size: 30px; color: #f33535; margin: auto 0;">
+                        archive
+                    </span>
+                    <span class="tooltiptext2">Stash this result</span>
+                </div>
+            </div>
+        </div>
 
         <div id="summaryanswer" style="visibility: hidden; display: none;">
-            <text>the answer would be shown here</text>
+            <textarea id="summaryanswer-input" value=""></textarea>
         </div>
 
         <div class="input-group mb-3">
