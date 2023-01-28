@@ -1,14 +1,22 @@
 {
-    "name": "TabStash",
-    "version": "1.0.0",
-    "description": "Tab Stasher - McHacks10",
-    "manifest_version": 3,
-    "author": "CodeJam Spies",
-    "action":{
-        "default_popup": "index.html",
-        "default_title": "TabStash"
-    },
-    "icons": {
-        "24": "just-head.png"
+  "name": "TabStash",
+  "version": "1.0.0",
+  "description": "Tab Stasher - McHacks10",
+  "manifest_version": 3,
+  "author": "CodeJam Spies",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true
     }
+  ],
+
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "TabStash"
+  },
+  "icons": {
+    "24": "just-head.png"
+  }
 }

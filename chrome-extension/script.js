@@ -157,3 +157,17 @@ function autocomplete(inp, arr) {
 //   autocomplete(document.getElementById("quesion", countries));
 // };
 autocomplete(document.getElementById("question"), countries);
+
+const highlighted_text = () => {
+  if (window.getSelection) return window.getSelection();
+};
+
+document.getElementById("highlighted").textContent = highlighted_text;
+chrome.tabs.executeScript(
+  {
+    code: "window.getSelection().toString();",
+  },
+  function (selection) {
+    document.getElementById("highlighted").textContent = selection[0];
+  }
+);
