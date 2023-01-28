@@ -7,13 +7,16 @@
     <meta charset="utf-8" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="stylesheet.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body style="background-color: #363238; width: 500px; padding: 5%">
     <!-- Header -->
     <div>
         <!-- TabStash Name + Logo -->
-        <div style="padding-bottom: 5%;" class="d-flex justify-content-center">
+        <div style="padding-bottom: 5%;" class="d-flex justify-content-between">
             <svg width="200" height="50" viewBox="0 0 370.3564069578959 101.72719185401702" class="css-1j8o68f">
                 <defs id="SvgjsDefs1517"></defs>
                 <g id="SvgjsG1518" featurekey="Df7oLJ-0"
@@ -32,23 +35,31 @@
                 </g>
             </svg>
 
-            <!-- User Icon -->
-            <svg width="24" height="26" viewBox="0 0 24 26" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M16.8019 14.1369C18.6479 15.0094 20.2219 16.3675 21.3554 18.0658C22.4889 19.7641 23.1393 21.7386 23.2369 23.7781C23.2497 23.965 23.2252 24.1525 23.1646 24.3297C23.104 24.5069 23.0086 24.6702 22.884 24.8101C22.7595 24.9499 22.6082 25.0635 22.4392 25.1441C22.2701 25.2247 22.0867 25.2707 21.8996 25.2795C21.7125 25.2882 21.5256 25.2595 21.3497 25.195C21.1739 25.1305 21.0127 25.0316 20.8757 24.9039C20.7386 24.7763 20.6284 24.6226 20.5515 24.4518C20.4747 24.281 20.4327 24.0966 20.4281 23.9094C20.3259 21.7429 19.3933 19.6989 17.8239 18.2018C16.2545 16.7047 14.1689 15.8695 12 15.8695C9.83107 15.8695 7.74545 16.7047 6.17607 18.2018C4.60668 19.6989 3.67409 21.7429 3.57187 23.9094C3.54661 24.2761 3.37877 24.6183 3.10428 24.8628C2.8298 25.1073 2.47049 25.2346 2.1033 25.2175C1.73612 25.2003 1.39025 25.0401 1.13976 24.771C0.889268 24.502 0.754072 24.1456 0.763122 23.7781C0.860361 21.7388 1.51037 19.7643 2.64356 18.066C3.77676 16.3677 5.35047 15.0095 7.19625 14.1369C6.01314 13.15 5.16274 11.8227 4.76072 10.3355C4.3587 8.84819 4.42457 7.27319 4.94937 5.82469C5.47417 4.37619 6.43243 3.1245 7.6938 2.2399C8.95517 1.3553 10.4584 0.880722 11.9991 0.880722C13.5397 0.880722 15.0429 1.3553 16.3043 2.2399C17.5657 3.1245 18.5239 4.37619 19.0488 5.82469C19.5736 7.27319 19.6394 8.84819 19.2374 10.3355C18.8354 11.8227 17.985 13.15 16.8019 14.1369ZM16.6875 8.375C16.6875 7.1318 16.1936 5.93951 15.3146 5.06044C14.4355 4.18136 13.2432 3.6875 12 3.6875C10.7568 3.6875 9.56451 4.18136 8.68543 5.06044C7.80636 5.93951 7.3125 7.1318 7.3125 8.375C7.3125 9.6182 7.80636 10.8105 8.68543 11.6896C9.56451 12.5686 10.7568 13.0625 12 13.0625C13.2432 13.0625 14.4355 12.5686 15.3146 11.6896C16.1936 10.8105 16.6875 9.6182 16.6875 8.375Z"
-                    fill="#F13534" />
-            </svg>
-        </div>
+            <div style="margin: auto 0; ">
+                <!-- Archive / Stash -->
+                <div class="tooltip2">
+                    <span class="material-symbols-outlined"
+                        style="color: white; font-size: 30px; color: #f33535; margin-right: 10px">
+                        archive
+                    </span>
+                    <span class="tooltiptext2">Stash this page</span>
+                </div>
 
-        <div class="horizontal">
-            <button class="btn btn-outline-danger" id="summarize">
-                Summarize Page<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15">
-                    <path fill="white"
-                        d="M3.38 8A9.502 9.502 0 0 1 12 2.5a9.502 9.502 0 0 1 9.215 7.182.75.75 0 1 0 1.456-.364C21.473 4.539 17.15 1 12 1a10.995 10.995 0 0 0-9.5 5.452V4.75a.75.75 0 0 0-1.5 0V8.5a1 1 0 0 0 1 1h3.75a.75.75 0 0 0 0-1.5H3.38Zm-.595 6.318a.75.75 0 0 0-1.455.364C2.527 19.461 6.85 23 12 23c4.052 0 7.592-2.191 9.5-5.451v1.701a.75.75 0 0 0 1.5 0V15.5a1 1 0 0 0-1-1h-3.75a.75.75 0 0 0 0 1.5h2.37A9.502 9.502 0 0 1 12 21.5c-4.446 0-8.181-3.055-9.215-7.182Z">
-                    </path>
-                </svg>
-            </button>
+
+                <!-- User Icon -->
+                <span class="material-symbols-outlined" style="color: white; font-size: 30px; color: #f33535">
+                    account_circle
+                </span>
+
+
+            </div>
         </div>
+        <button class="btn btn-light horizontal text-center tooltiptext" id="summarize"
+            style="flex:all; flex-direction: row;">
+            <div>Summarize Page</div>
+        </button>
+
+
         <div id="summaryanswer" style="visibility: hidden;">
             <text>the answer would be shown here</text>
         </div>

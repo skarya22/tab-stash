@@ -1,3 +1,55 @@
 #summaryanswer {
     color: white
 }
+
+#stashtab {
+    margin-right: 10px;
+}
+
+.btn-light {
+    background-color: rgba(186, 0, 0, 0.7);
+    border-color: rgba(186, 0, 0, 0.7);
+    color: white
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+/* Tooltip container */
+.tooltip2 {
+    position: relative;
+    display: inline-block;
+    /* If you want dots under the hoverable text */
+    font-size: 16px;
+    size: 10px;
+
+}
+
+/* Tooltip text */
+.tooltip2 .tooltiptext2 {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip2:hover .tooltiptext2 {
+    visibility: visible;
+    width: 120px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+    /* Use half of the width (120/2 = 60), to center the tooltip */
+}
