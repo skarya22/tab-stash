@@ -14,7 +14,7 @@ from app.serializers import CurrentUserSerializer, StashSerializer, LabelSeriali
 from app.models import User, Stash, Label
 
 import app.cohere_ai as co
-import app.nlp as nlp
+#import app.nlp as nlp
 
 # Create your views here.
 
@@ -71,20 +71,20 @@ def get_labels_by_user(request, user_id: int):
 
 
 # GET request to get summarization from a given text
-@api_view(['GET'])
+@api_view(['POST'])
 def get_summary_from_text(request):
     request_body = JSONParser().parse(request)
     text = request_body['text']
 
     print(text)
 
-    """
-    if len(text) < 16:
-        return Response({"text": co.summmarize(text)})
-    return Response({"text": nlp.summmarize(text)})
+    
+    #if len(text) < 16:
+        #return Response({"text": co.summmarize(text)})
+    #return Response({"text": nlp.summmarize(text)})
 
-    """
-    return Response({"text": "placeholder_summary"})
+    
+    return Response({"text": co.summmarize(text)})
 
 
 
@@ -94,7 +94,7 @@ def get_summary_from_text(request):
 # GET request to get qna from a given question and text
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_answer_from_text_and_question(request):
     request_body = JSONParser().parse(request)
     text = request_body['text']
@@ -103,13 +103,13 @@ def get_answer_from_text_and_question(request):
     print(question)
     print(text)
 
-    """
-    if len(text) < 16:
-        return Response({"answer": co.qna(text, question)})
-    return Response({"answer": nlp.qna(text, question)})
+    
+    #if len(text) < 16:
+        #return Response({"answer": co.qna(text, question)})
+    #return Response({"answer": nlp.qna(text, question)})
 
-    """
-    return Response({"answer": "placeholder_answer"})
+    
+    return Response({"answer": co.qna(text, question)})
 
 
 
