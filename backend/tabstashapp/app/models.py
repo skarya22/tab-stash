@@ -22,12 +22,24 @@ class Label(models.Model):
 
 class Stash(models.Model):
 
+
+    SUMMARY = 'summary'
+    QNA = 'qna'
+    SUBSECTION = 'subsection'
+
+    TYPES = (
+        (SUMMARY, SUMMARY),
+        (QNA, QNA),
+        (SUBSECTION, SUBSECTION),
+    )
+
     # Foreign key
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     # attributes
     text = models.TextField()
     url = models.CharField(max_length=2048)
+    stash_type = models.CharField(max_length=255, choices=TYPES, default=SUMMARY)
     date_created = models.DateField()
     
     # many to many relation
