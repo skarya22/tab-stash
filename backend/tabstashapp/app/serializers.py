@@ -14,11 +14,11 @@ class LabelSerializer(serializers.ModelSerializer):
         fields = ('name', 'user')
 
 class StashSerializer(serializers.ModelSerializer):
-
-    label = LabelSerializer(many=True)
     class Meta:
         model = Stash
-        fields = ('user', 'text', 'url', 'date_created')
+        fields = ('user', 'text', 'url', 'stash_type', 'date_created', 'labels')
+
+
 
 
 

@@ -1,0 +1,106 @@
+Endpoint documentation
+
+
+POST: http://127.0.0.1:8000/stash/createStash
+Body {
+    "user": 2,
+    "text": "this is a summary of page1",
+    "url": "this is the url of page1",
+    "stash_type": "summary",
+    "date_created": "2022-03-22",
+    "labels": [1, 2]
+}
+Response {
+    "user": 2,
+    "text": "this is a summary of page1",
+    "url": "this is the url of page1",
+    "stash_type": "summary",
+    "date_created": "2022-03-22",
+    "labels": [
+        1,
+        2
+    ]
+}
+
+POST: http://127.0.0.1:8000/label/createLabel
+Body {
+    "name": "label3",
+    "user": 2
+}
+Response {
+     "name": "label3",
+     "user": 2
+}
+
+GET: http://127.0.0.1:8000/label/getLabels/2/
+Response {
+    "name": "label1",
+    "user" : 2
+    },
+    {"name": "label2",
+    "user" : 2
+    },
+    {"name": "label3",
+    "user" : 2}
+}
+
+POST: http://127.0.0.1:8000/text/getSummary
+Body {
+    "text": "Text to summarize"
+}
+Response {
+    "text": "placeholder_summary"
+}
+
+POST: http://127.0.0.1:8000/text/getQna
+Body {
+    "text": "Text to summarize",
+    "question": "Question about text"
+}
+Response {
+    "answer": "placeholder_answer"
+}
+
+GET: http://127.0.0.1:8000/stash/getStashesByUser/2/
+Response {
+    "user": 2,
+    "text": "this is a summary of page1",
+    "url": "this is the url of page1",
+    "stash_type": "summary",
+    "date_created": "2022-03-22"
+    "labels": [1, 2]
+},
+{
+    "user": 2,
+    "text": "this is a summary of page2",
+    "url": "this is the url of page2",
+    "stash_type": "summary",
+    "date_created": "2022-03-22",
+    "labels": [
+        1,
+        2,
+        3
+    ]
+}
+
+GET: http://127.0.0.1:8000/stash/getStashesByUser/2/2/
+Response {
+    "user": 2,
+    "text": "this is a summary of page1",
+    "url": "this is the url of page1",
+    "stash_type": "summary",
+    "date_created": "2022-03-22"
+    "labels": [1, 2]
+},
+{
+    "user": 2,
+    "text": "this is a summary of page2",
+    "url": "this is the url of page2",
+    "stash_type": "summary",
+    "date_created": "2022-03-22",
+    "labels": [
+        1,
+        2,
+        3
+    ]
+}
