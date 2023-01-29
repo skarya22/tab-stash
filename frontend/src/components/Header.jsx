@@ -37,9 +37,8 @@ const Header = (props) => {
               localStorage.removeItem("token");
               window.location.reload();
             }}
-            class="material-symbols-outlined"
+            className="material-symbols-outlined"
             style={{
-              color: "white",
               fontSize: "50px",
               color: "#f33535",
             }}

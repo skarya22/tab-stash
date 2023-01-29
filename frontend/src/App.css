@@ -44,3 +44,28 @@
   background-color: #363238;
   padding: 20px
 }
+
+#home-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#card-container {
+  margin-top: 20px;
+  border-radius: 10px;
+  min-height: 500px;
+  width: 75%;
+}
+
+#collapsable-card-content {
+  overflow: hidden;
+  font-size: 18px;
+}
+
+#collapsable-card-content-extended {
+  flex-direction: row;
+  display: flex;
+}
