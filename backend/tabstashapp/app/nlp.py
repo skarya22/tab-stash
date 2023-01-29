@@ -1,25 +1,35 @@
-from revChatGPT.ChatGPT import Chatbot
+# from revChatGPT.ChatGPT import Chatbot
+from ChatGPT_lite.ChatGPT import Chatbot
 import os
+import sys
+import asyncio
 
 #chatbot = Chatbot({"session_token": os.getenv('CHATGPT_TOKEN')})
 
 
-def summarize(text):
+
+async def summarize(text):
 
     prompt = "Summarize this text: "
-    summary = chatbot.ask(prompt + text, conversation_id=None, parent_id=None)
+    # summary = chatbot.ask(prompt + text, conversation_id=None, parent_id=None)
+    while True:
+        summary = await chatbot.ask(prompt + text)
     # print(summary.get("message"))
 
-    return summary.get("message")
+    # return summary.get("message")
+    return {summary["answer"]}
 
 
-def qna(text, question):
+async def qna(text, question):
     prompt = "Answer this question based on the text: "
-    answer = chatbot.ask(prompt + question + "\n" + " Text: " +
-                         text, conversation_id=None, parent_id=None)
+    # answer = chatbot.ask(prompt + question + "\n" + " Text: " +
+    #                      text, conversation_id=None, parent_id=None)
+    while True:
+        answer = await chatbot.ask(prompt + question + "\n" + " Text: " + text)
     # print(answer.get("message"))
 
-    return answer.get("message")
+    # return answer.get("message")
+    return {answer["answer"]}
 
 
 if __name__ == "__main__":
@@ -28,4 +38,5 @@ if __name__ == "__main__":
     # test_text = "The platypus is cute."
     # test_question = "What animal is cute?"
     # summarize(test_text)
-    print(qna(test_text, test_question))
+    print(summarize(test_text))
+    # print(qna(test_text, test_question))
