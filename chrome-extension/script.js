@@ -1,4 +1,6 @@
 window.onload = function () {
+  let labels = [];
+  let label_ids = [];
   // SUMMARIZE BUTTON
   var text = "";
   chrome.runtime.onMessage.addListener(function (
@@ -13,10 +15,10 @@ window.onload = function () {
   document.getElementById("summarize").onclick = function () {
     document.getElementById("stash1").onclick = function (x) {
       let url = "";
-      chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
-        url = tabs[0].url;
-        // use `url` here inside the callback because it's asynchronous!
-      });
+      console.log(document.location.href);
+      console.log(
+        selected_labels.map((label) => label_ids[labels.indexOf(label)])
+      );
 
       fetch("http://127.0.0.1:8000/stash/createStash", {
         method: "POST",
@@ -26,7 +28,7 @@ window.onload = function () {
         body: JSON.stringify({
           user: 2,
           text: "hello how are you today",
-          url: url,
+          url: document.location.href,
           stash_type: "summary",
           date_created: "2021-05-01",
           labels: selected_labels.map(
@@ -72,8 +74,7 @@ window.onload = function () {
   };
 
   // INSERT LABELS IN SUMMARY SECTION
-  let labels = [];
-  let label_ids = [];
+
   fetch("http://127.0.0.1:8000/label/getLabels/2/", {
     method: "GET",
     headers: {
@@ -85,6 +86,7 @@ window.onload = function () {
       console.log("Success:", data);
       labels = data.map((label) => label.name);
       label_ids = data.map((label) => label.id);
+      console.log(labels);
       var list = document.getElementById("label-input-list");
       var list2 = document.getElementById("label-input-list2");
       labels.forEach(function (item) {
@@ -102,20 +104,24 @@ window.onload = function () {
     if (e.key === "Enter") {
       var label = label_input.value;
       if (label.length > 0) {
-        fetch("http://127.0.0.1:8000/label/createLabel", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name: label, user: 2 }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Success:", data);
+        if (labels.includes(label) == false) {
+          fetch("http://127.0.0.1:8000/label/createLabel", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name: label, user: 2 }),
           })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success:", data);
+              labels.push(data.name);
+              label_ids.push(data.id);
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }
         selected_labels.push(label);
         var list = document.getElementById("selected-labels-list");
         var item = document.createElement("li");
