@@ -1,7 +1,7 @@
 from revChatGPT.ChatGPT import Chatbot
 import os
 
-chatbot = Chatbot({"session_token": os.getenv('CHATGPT_TOKEN')})
+#chatbot = Chatbot({"session_token": os.getenv('CHATGPT_TOKEN')})
 
 
 def summarize(text):
