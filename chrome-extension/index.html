@@ -51,7 +51,8 @@
                 <div>Summarize Page</div>
             </button>
 
-            <div class="d-flex justify-content-between" id="label-input-container">
+            <div class="d-flex justify-content-between label-stash-container" id="label-input-container"
+                style="visibility: hidden; display: none;">
                 <!-- Invisible Input -->
                 <input name="car" list="label-input-list" id="label-input" placeholder="Add label(s)..." />
                 <datalist id="label-input-list">
@@ -68,8 +69,8 @@
         </div>
 
         <!-- Summary Result -->
-        <ul id="selected-labels-list"></ul>
-        <div id="summaryanswer" style="visibility: hidden; display: none;">
+        <ul id="selected-labels-list" style="visibility: hidden; display: none;"></ul>
+        <div id="summaryanswer" style="visibility: hidden; display: none; margin-bottom: 10px">
             <textarea id="summaryanswer-input" class="answer" value=""></textarea>
         </div>
 
@@ -78,13 +79,16 @@
             <input type="text" id="question" class="form-control" placeholder="Enter your question here"
                 aria-label="Question" aria-describedby="basic-addon2">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" id = "question-button" type="button">Enter</button>
+                <button class="btn btn-outline-secondary" id="question-button" type="button">Enter</button>
             </div>
         </div>
 
-        <div class="d-flex justify-content-between" id="label-input-container" class="label-stash-container">
-            <!-- Add label input -->
-            <input id="label-input" class="label-input-box" placeholder="Add label(s)..."></input>
+        <div class="d-flex justify-content-between label-stash-container" id="label-input-container2">
+            <!-- Invisible Input -->
+            <input id="label-input2" class="label-input-list" placeholder="Add label(s)..."
+                list="label-input-list2"></input>
+            <datalist id="label-input-list2">
+            </datalist>
             <!-- Stash result button -->
             <div class="tooltip2" style="margin-top: 5px; margin-right: 5px">
                 <span class="material-symbols-outlined"
@@ -96,7 +100,7 @@
         </div>
         <!-- Question Result -->
         <div id="questionanswer" style="visibility: hidden; display: none;">
-            <textarea id="questionanswer-input" class="answer"  value=""></textarea>
+            <textarea id="questionanswer-input" class="answer" value=""></textarea>
         </div>
 
         <!-- Highlight Section -->

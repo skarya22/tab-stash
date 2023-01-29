@@ -5,16 +5,14 @@ document.getElementById("summarize").onclick = function () {
   document.getElementById("summaryanswer-input").value =
     "Material You is Google’s big new theming engine it launched last year alongside Android 12, and it has been spreading to many Android apps since. However, the dynamic interface theming option hasn’t spread beyond Google’s own platforms just yet, with it remaining locked to Android only. The latest Chrome Canary release, version 110, is changing that and brings Material You to Mac, Windows, ChromeOS, and Linux. Since Chrome doesn’t hook into your computer’s desktop wallpaper, it works a little differently than on Android. As spotted by Redditor u/Leopeva64-2, the Chrome interface dynamically takes on the dominant colors from the wallpaper you choose for your new tab page. To make this work, you first need to enable the chrome://flags/#customize-chrome-color-extraction flag.";
   switchvisibility(document.getElementById("label-input-container"));
+  switchvisibility(document.getElementById("selected-labels-list"));
 };
 
 document.getElementById("question-button").onclick = function () {
   switchvisibility(document.getElementById("questionanswer"));
+  switchvisibility(document.getElementById("label-input-container2"));
 };
 
-port.onMessage.addListener(function (msg) {
-  document.getElementById("highlighted").innerHTML = msg.joke;
-  document.getElementById("highlighted").innerText = msg.joke;
-});
 
 // INSERT LABELS IN SUMMARY SECTION
 var labels = ["penguins", "elephants"];
@@ -24,6 +22,16 @@ labels.forEach(function (item) {
   option.value = item;
   list.appendChild(option);
 });
+
+// INSERT LABELS IN QUESTION SECTION
+var labels2 = ["penguins", "elephants"];
+var list2 = document.getElementById("label-input-list2");
+labels2.forEach(function (item) {
+  var option = document.createElement("option");
+  option.value = item;
+  list2.appendChild(option);
+});
+
 
 var selected_labels = [];
 
@@ -47,13 +55,8 @@ label_input.addEventListener("keypress", function (e) {
 
 var countries = ["recent answer 1", "recent answer 2", "test answer"];
 function switchvisibility(x) {
-  if (x.style.visibility == "visible") {
-    x.style.visibility = "hidden";
-    x.style.display = "none";
-  } else {
     x.style.visibility = "visible";
     x.style.display = "block";
-  }
 }
 
 function autocomplete(inp, arr) {
@@ -159,6 +162,7 @@ function autocomplete(inp, arr) {
       /*If the ENTER key is pressed, prevent the form from being submitted,*/
       e.preventDefault();
       switchvisibility(document.getElementById("questionanswer"));
+      switchvisibility(document.getElementById("label-input-container2"));
       if (currentFocus > -1) {
         /*and simulate a click on the "active" item:*/
         if (x) x[currentFocus].click();
