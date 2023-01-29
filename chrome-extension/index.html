@@ -10,6 +10,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body style="background-color: #363238; width: 500px; padding: 5%">
@@ -54,7 +57,7 @@
             <div class="d-flex justify-content-between label-stash-container" id="label-input-container"
                 style="visibility: hidden; display: none;">
                 <!-- Invisible Input -->
-                <input name="car" list="label-input-list" id="label-input" placeholder="Add label(s)..." />
+                <input name="car" list="label-input-list" id="label-input" placeholder="  Add label" />
                 <datalist id="label-input-list">
                 </datalist>
                 <!-- Stash result button -->
@@ -68,26 +71,26 @@
             </div>
         </div>
 
+        <!-- Selected Tags -->
+        <ul id="selected-labels-list" style="visibility: hidden; display: none; margin-bottom: 20px;"></ul>
+
         <!-- Summary Result -->
-        <ul id="selected-labels-list" style="visibility: hidden; display: none;"></ul>
         <div id="summaryanswer" style="visibility: hidden; display: none; margin-bottom: 10px">
             <textarea id="summaryanswer-input" class="answer" value=""></textarea>
         </div>
 
-        <!-- Question Input -->
-        <div class="input-group mb-3">
-            <input type="text" id="question" class="form-control" placeholder="Enter your question here"
-                aria-label="Question" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" id="question-button" type="button">Enter</button>
-            </div>
+        <div class="d-flex justify-content-between" style="margin-bottom: 10px;" id="Q&A">
+        <div>
+            <button class="btn btn-light" id="q&a-button">
+                Q & A
+            </button>
         </div>
 
         <!-- label adder -->
         <div class="d-flex justify-content-between label-stash-container" id="label-input-container2">
             <!-- Invisible Input -->
-            <input id="label-input2" class="label-input-list" placeholder="Add label(s)..."
-                list="label-input-list2"></input>
+            <input id="label-input2" class="label-input-list" placeholder="  Add label"
+                list="label-input-list2">
             <datalist id="label-input-list2">
             </datalist>
             <!-- Stash result button -->
@@ -98,24 +101,38 @@
                 </span>
                 <span class="tooltiptext2">Stash this result</span>
             </div>
+
         </div>
+        </div>
+        <!-- Selected Tags -->
+        <ul id="selected-labels-list2" style="visibility: hidden; display: none;"></ul>
+        
+        <!-- Question Input -->
+        <div class="input-group mb-3" id="question-input">
+            <!-- Invisible Input -->
+            <input id="label-input3" class="label-input-list" placeholder="  Enter your question"
+                list="label-input-list3">
+            <datalist id="label-input-list3">
+            </datalist>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" id="question-button" type="button">Enter</button>
+            </div>
+        </div> 
+
+        
         <!-- Question Result -->
-        <div id="questionanswer" style="visibility: hidden; display: none;">
+        <div id="questionanswer" style="visibility: hidden; display: none; margin-bottom: 10px">
             <textarea id="questionanswer-input" class="answer" value=""></textarea>
         </div>
 
         <!-- Highlight Section -->
         <div>
-            <button class="btn btn-primary" id="savehighlighted">
+            <button class="btn btn-light" id="savehighlighted">
                 Save Highlighted
             </button>
         </div>
         <!-- label adder -->
 
-        <div>
-            <Text id="highlighted">
-            </Text>
-        </div>
         <script src="script.js"></script>
 </body>
 
