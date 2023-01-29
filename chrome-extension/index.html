@@ -40,8 +40,6 @@
                 <span class="material-symbols-outlined" style="color: white; font-size: 30px; color: #f33535">
                     account_circle
                 </span>
-
-
             </div>
         </div>
 
@@ -54,20 +52,23 @@
             </button>
 
             <div class="d-flex justify-content-between" id="label-input-container">
-                <!-- Add label input -->
-                <input id="label-input" class="label-input-box" placeholder="Add label(s)..."></input>
+                <!-- Invisible Input -->
+                <input name="car" list="label-input-list" id="label-input" placeholder="Add label(s)..." />
+                <datalist id="label-input-list">
+                </datalist>
                 <!-- Stash result button -->
                 <div class="tooltip2" style="margin-top: 5px; margin-right: 5px">
                     <span class="material-symbols-outlined"
                         style="color: white; font-size: 30px; color: #f33535; margin: auto 0;">
                         archive
                     </span>
-                    <span class="tooltiptext2">Stash this result</span>
+                    <span class="tooltiptext2" id="stash-summary">Stash this result</span>
                 </div>
             </div>
         </div>
 
         <!-- Summary Result -->
+        <ul id="selected-labels-list"></ul>
         <div id="summaryanswer" style="visibility: hidden; display: none;">
             <textarea id="summaryanswer-input" class="answer" value=""></textarea>
         </div>
