@@ -88,7 +88,7 @@ export default function SignIn({ setSigningIn }) {
             >
               Sign In
             </Button>
-            <GoogleSocialAuth />
+            {/* <GoogleSocialAuth /> */}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
