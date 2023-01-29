@@ -1,35 +1,40 @@
-# from revChatGPT.ChatGPT import Chatbot
-from ChatGPT_lite.ChatGPT import Chatbot
+from revChatGPT.ChatGPT import Chatbot
+# from ChatGPT_lite.ChatGPT import Chatbot
 import os
+from dotenv import load_dotenv
+
 import sys
 import asyncio
 
-#chatbot = Chatbot({"session_token": os.getenv('CHATGPT_TOKEN')})
+load_dotenv()
 
 
+print(os.getenv('CHATGPT_TOKEN'))
 
-async def summarize(text):
+chatbot = Chatbot({"session_token": os.getenv('CHATGPT_TOKEN')})
+
+
+def summarize(text):
 
     prompt = "Summarize this text: "
-    # summary = chatbot.ask(prompt + text, conversation_id=None, parent_id=None)
-    while True:
-        summary = await chatbot.ask(prompt + text)
+    summary = chatbot.ask(prompt + text, conversation_id=None, parent_id=None)
+    # while True:
+    #     summary = await chatbot.ask(prompt + text)
     # print(summary.get("message"))
 
-    # return summary.get("message")
-    return {summary["answer"]}
+    return summary.get("message")
+    # return {summary["answer"]}
 
-
-async def qna(text, question):
+def qna(text, question):
     prompt = "Answer this question based on the text: "
-    # answer = chatbot.ask(prompt + question + "\n" + " Text: " +
-    #                      text, conversation_id=None, parent_id=None)
-    while True:
-        answer = await chatbot.ask(prompt + question + "\n" + " Text: " + text)
+    answer = chatbot.ask(prompt + question + "\n" + " Text: " +
+                         text, conversation_id=None, parent_id=None)
+    # while True:
+    #     answer = await chatbot.ask(prompt + question + "\n" + " Text: " + text)
     # print(answer.get("message"))
 
-    # return answer.get("message")
-    return {answer["answer"]}
+   
+    # return {answer["answer"]}
 
 
 if __name__ == "__main__":

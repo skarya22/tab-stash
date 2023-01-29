@@ -14,7 +14,7 @@ from app.serializers import CurrentUserSerializer, StashSerializer, LabelSeriali
 from app.models import User, Stash, Label
 
 import app.cohere_ai as co
-import app.nlp as nlp
+#import app.nlp as nlp
 
 # Create your views here.
 
@@ -84,7 +84,7 @@ def get_summary_from_text(request):
     return Response({"text": nlp.summmarize(text)})
 
     """
-    return Response({"text": "placeholder_summary"})
+    return Response({"text": co.summmarize(text)})
 
 
 

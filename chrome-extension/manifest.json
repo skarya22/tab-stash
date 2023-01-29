@@ -20,5 +20,5 @@
   "icons": {
     "24": "just-head.png"
   },
-  "permissions": ["storage", "tabs"]
+  "permissions": ["storage", "tabs", "http://127.0.0.1:8000/"]
 }
