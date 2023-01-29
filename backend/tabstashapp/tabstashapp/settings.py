@@ -53,8 +53,12 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'rest_auth.registration',
 
+    'rest_auth',
+    'rest_framework.authtoken',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'tabstashapp.urls'
@@ -86,6 +91,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'tabstashapp.wsgi.application'
+
+CORS_ORIGIN_WHITELIST = [
+     'http://localhost:3000'
+]
 
 
 # Database
@@ -174,7 +183,9 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SITE_ID = 3
 
+"""
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+"""
 
 
