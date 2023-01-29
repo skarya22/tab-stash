@@ -13,6 +13,19 @@ document.getElementById("question-button").onclick = function () {
   switchvisibility(document.getElementById("label-input-container2"));
 };
 
+document.getElementById("stash1").onclick = function (x) {
+  switchToCheck(this)
+}
+
+document.getElementById("stash2").onclick = function (x) {
+  switchToCheck(this)
+}
+
+var switchToCheck = function (x) {
+  console.log(x)
+  x.innerHTML = "check_circle";
+  x.style.color = "#4285F4";
+}
 
 // INSERT LABELS IN SUMMARY SECTION
 var labels = ["penguins", "elephants"];
