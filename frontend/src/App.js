@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "material-symbols";
+import Home from "./pages/Home";
+import SignInPage from "./pages/SignInPage";
+
+var isLoggedIn = false;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  if (localStorage.getItem("token") != null) {
+    isLoggedIn = true;
+  }
+
+  if (isLoggedIn) {
+    return <Home />;
+  } else {
+    return <SignInPage />;
+  }
 }
 
 export default App;

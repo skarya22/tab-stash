@@ -83,7 +83,7 @@ Response {
     ]
 }
 
-GET: http://127.0.0.1:8000/stash/getStashesByUser/2/2/
+GET: http://127.0.0.1:8000/stash/getStashesByUserByLabel/2/2/
 Response {
     "user": 2,
     "text": "this is a summary of page1",

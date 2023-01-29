@@ -78,13 +78,13 @@ def get_summary_from_text(request):
 
     print(text)
 
-    """
+    
     if len(text) < 16:
         return Response({"text": co.summmarize(text)})
     return Response({"text": nlp.summmarize(text)})
 
-    """
-    return Response({"text": "placeholder_summary"})
+    
+    #return Response({"text": "placeholder_summary"})
 
 
 
@@ -103,13 +103,13 @@ def get_answer_from_text_and_question(request):
     print(question)
     print(text)
 
-    """
+    
     if len(text) < 16:
         return Response({"answer": co.qna(text, question)})
     return Response({"answer": nlp.qna(text, question)})
 
-    """
-    return Response({"answer": "placeholder_answer"})
+    
+    #return Response({"answer": "placeholder_answer"})
 
 
 
