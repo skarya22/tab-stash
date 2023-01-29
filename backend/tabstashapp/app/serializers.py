@@ -11,12 +11,12 @@ class CurrentUserSerializer(serializers.Serializer):
 class LabelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Label
-        fields = ('name', 'user')
+        fields = ('id', 'name', 'user')
 
 class StashSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stash
-        fields = ('user', 'text', 'url', 'stash_type', 'date_created', 'labels')
+        fields = ('id', 'user', 'text', 'url', 'stash_type', 'date_created', 'labels')
 
 
 
