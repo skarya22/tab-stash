@@ -6,11 +6,13 @@ from dotenv import load_dotenv
 # import asyncio
 load_dotenv()
 # print(os.getenv('CHATGPT_TOKEN').type)
-chatbot = Chatbot({"session_token": os.getenv('CHATGPT_TOKEN')})
+
 
 
 
 def summarize(text):
+
+    chatbot = Chatbot({"session_token": os.getenv('CHATGPT_TOKEN')})
 
     prompt = "Summarize this text: "
     summary = chatbot.ask(prompt + text, conversation_id=None, parent_id=None)
@@ -23,6 +25,8 @@ def summarize(text):
 
 
 def qna(text, question):
+
+    chatbot = Chatbot({"session_token": os.getenv('CHATGPT_TOKEN')})
     prompt = "Answer this question based on the text: "
     answer = chatbot.ask(prompt + question + "\n" + " Text: " +
                          text, conversation_id=None, parent_id=None)
