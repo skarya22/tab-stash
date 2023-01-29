@@ -1,26 +1,45 @@
 // SUMMARIZE BUTTON
+var text = "";
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  console.log(request.greeting);
+  text = request.greeting;
+});
 
 document.getElementById("summarize").onclick = function () {
+  console.log("GIVING THIS" + text);
+  fetch("http://127.0.0.1:8000/text/getSummary", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ text: text }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("summaryanswer-input").value = data.detail;
+      console.log("Success:", data.detail);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   switchvisibility(document.getElementById("summaryanswer"));
-  document.getElementById("summaryanswer-input").value =
-    "Material You is Google’s big new theming engine it launched last year alongside Android 12, and it has been spreading to many Android apps since. However, the dynamic interface theming option hasn’t spread beyond Google’s own platforms just yet, with it remaining locked to Android only. The latest Chrome Canary release, version 110, is changing that and brings Material You to Mac, Windows, ChromeOS, and Linux. Since Chrome doesn’t hook into your computer’s desktop wallpaper, it works a little differently than on Android. As spotted by Redditor u/Leopeva64-2, the Chrome interface dynamically takes on the dominant colors from the wallpaper you choose for your new tab page. To make this work, you first need to enable the chrome://flags/#customize-chrome-color-extraction flag.";
   switchvisibility(document.getElementById("label-input-container"));
   switchvisibility(document.getElementById("selected-labels-list"));
 };
 
-document.getElementById("question-button").onclick = function () {
-  switchvisibility(document.getElementById("questionanswer"));
-  switchvisibility(document.getElementById("label-input-container2"));
-  switchvisibility(document.getElementById("selected-labels-list2"));
-};
-
-document.getElementById("stash1").onclick = function (x) {
-  switchToCheck(this);
-};
-
-document.getElementById("stash2").onclick = function (x) {
-  switchToCheck(this);
-};
+setTimeout(() => {
+  document.getElementById("question-button").onclick = function () {
+    switchvisibility(document.getElementById("questionanswer"));
+    switchvisibility(document.getElementById("label-input-container2"));
+    switchvisibility(document.getElementById("selected-labels-list2"));
+  };
+  document.getElementById("stash1").onclick = function (x) {
+    switchToCheck(this);
+  };
+  document.getElementById("stash2").onclick = function (x) {
+    switchToCheck(this);
+  };
+}, 60);
 
 var switchToCheck = function (x) {
   console.log(x);
@@ -29,13 +48,26 @@ var switchToCheck = function (x) {
 };
 
 // INSERT LABELS IN SUMMARY SECTION
-var labels = ["penguins", "elephants"];
-var list = document.getElementById("label-input-list");
-labels.forEach(function (item) {
-  var option = document.createElement("option");
-  option.value = item;
-  list.appendChild(option);
-});
+var labels = [];
+fetch("http://127.0.0.1:8000/label/getLabels/2/", {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+  },
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("Success:", data);
+    labels = data.map((label) => label.name);
+    var list = document.getElementById("label-input-list");
+    var list2 = document.getElementById("label-input-list2");
+    labels.forEach(function (item) {
+      var option = document.createElement("option");
+      option.value = item;
+      list.appendChild(option);
+      list2.appendChild(option);
+    });
+  });
 
 var selected_labels = [];
 
@@ -44,6 +76,20 @@ label_input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     var label = label_input.value;
     if (label.length > 0) {
+      fetch("http://127.0.0.1:8000/label/createLabel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: label, user: 2 }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
       selected_labels.push(label);
       var list = document.getElementById("selected-labels-list");
       var item = document.createElement("li");
@@ -56,13 +102,6 @@ label_input.addEventListener("keypress", function (e) {
 });
 
 // INSERT LABELS IN QUESTION SECTION
-var labels2 = ["penguins", "elephants"];
-var list2 = document.getElementById("label-input-list2");
-labels2.forEach(function (item) {
-  var option = document.createElement("option");
-  option.value = item;
-  list2.appendChild(option);
-});
 
 var selected_labels2 = [];
 
@@ -92,8 +131,3 @@ function switchvisibility(x, switch_display = true) {
     if (switch_display) x.style.display = "block";
   }
 }
-
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  console.log(request.greeting);
-  sendResponse({ farewell: "ack" });
-});
