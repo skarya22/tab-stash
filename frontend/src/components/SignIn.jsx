@@ -11,6 +11,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import googleLogin from "../scripts/googleLoginService";
+import GoogleSocialAuth from "../scripts/GoogleSocialAuth";
 
 const theme = createTheme();
 
@@ -86,6 +88,7 @@ export default function SignIn({ setSigningIn }) {
             >
               Sign In
             </Button>
+            <GoogleSocialAuth />
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

@@ -30,19 +30,28 @@ const Home = () => {
   const changeResults = (label) => {
     setSelectedLabel(label);
     if (label) {
-      axios.get("label/getStashesByUserByLabel/2").then((res) => {
-        var tempStashes = [];
-        // "summary" "qna" "subsection"
-        res.data.forEach((stash) => {
-          if (stash.stash_type === "qna") {
-            stash.question = stash.text.substring(0, stash.text.indexOf(`\n`));
-            stash.text = stash.text.substring(stash.text.indexOf(`\n`));
-          }
-          tempStashes.push(stash);
+      axios
+        .get(
+          "stash/getStashesByUserByLabel/2/" +
+            labels.find((l) => l.name == label).id +
+            "/"
+        )
+        .then((res) => {
+          var tempStashes = [];
+          // "summary" "qna" "subsection"
+          res.data.forEach((stash) => {
+            if (stash.stash_type === "qna") {
+              stash.question = stash.text.substring(
+                0,
+                stash.text.indexOf(`\n`)
+              );
+              stash.text = stash.text.substring(stash.text.indexOf(`\n`));
+            }
+            tempStashes.push(stash);
+          });
+          setResults(tempStashes);
+          console.log(res.data);
         });
-        setResults(tempStashes);
-        console.log(res.data);
-      });
     } else {
       axios
         .get("stash/getStashesByUser/2/")
@@ -74,7 +83,7 @@ const Home = () => {
       .then((res) => {
         var tempLabels = [];
         res.data.forEach((label) => {
-          tempLabels.push(label.name);
+          tempLabels.push(label);
         });
         setLabels(tempLabels);
 
@@ -111,7 +120,9 @@ const Home = () => {
                 text={result.text}
                 url={result.url}
                 stash_type={result.stash_type}
-                labels={result.labels}
+                labels={result.labels.map((label) => {
+                  return labels[label - 1].name;
+                })}
                 question={result.question ? result.question : null}
               />
             );

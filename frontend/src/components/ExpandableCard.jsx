@@ -10,6 +10,7 @@ export default function RecipeReviewCard({
   question,
   labels,
 }) {
+  console.log("labels: ", labels[0]);
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -106,6 +107,7 @@ export default function RecipeReviewCard({
             >
               Labels:{" "}
               {labels.map((label) => {
+                console.log(labels);
                 if (label === labels[labels.length - 1]) {
                   return "and " + label;
                 } else {

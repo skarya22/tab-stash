@@ -17,12 +17,12 @@ const FilterLabels = ({ labels, selectedLabel, changeResults }) => {
       {labels.map((label) => {
         return (
           <ToggleButton
-            key={label}
-            value={label}
+            key={label.id}
+            value={label.name}
             aria-label="left aligned"
             id="typeswitcher"
           >
-            <div>{label}</div>
+            <div>{label.name}</div>
           </ToggleButton>
         );
       })}
