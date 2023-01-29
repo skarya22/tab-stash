@@ -14,7 +14,6 @@ window.onload = function () {
 
   document.getElementById("summarize").onclick = function () {
     document.getElementById("stash1").onclick = function (x) {
-      let url = "";
       console.log(document.location.href);
       console.log(
         selected_labels.map((label) => label_ids[labels.indexOf(label)])
@@ -27,7 +26,7 @@ window.onload = function () {
         },
         body: JSON.stringify({
           user: 2,
-          text: "hello how are you today",
+          text: document.getElementById("summaryanswer-input").value,
           url: document.location.href,
           stash_type: "summary",
           date_created: "2021-05-01",
