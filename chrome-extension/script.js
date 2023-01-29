@@ -14,18 +14,18 @@ document.getElementById("question-button").onclick = function () {
 };
 
 document.getElementById("stash1").onclick = function (x) {
-  switchToCheck(this)
-}
+  switchToCheck(this);
+};
 
 document.getElementById("stash2").onclick = function (x) {
-  switchToCheck(this)
-}
+  switchToCheck(this);
+};
 
 var switchToCheck = function (x) {
-  console.log(x)
+  console.log(x);
   x.innerHTML = "check_circle";
   x.style.color = "#4285F4";
-}
+};
 
 // INSERT LABELS IN SUMMARY SECTION
 var labels = ["penguins", "elephants"];
@@ -35,16 +35,6 @@ labels.forEach(function (item) {
   option.value = item;
   list.appendChild(option);
 });
-
-// INSERT LABELS IN QUESTION SECTION
-var labels2 = ["penguins", "elephants"];
-var list2 = document.getElementById("label-input-list2");
-labels2.forEach(function (item) {
-  var option = document.createElement("option");
-  option.value = item;
-  list2.appendChild(option);
-});
-
 
 var selected_labels = [];
 
@@ -68,10 +58,14 @@ label_input.addEventListener("keypress", function (e) {
 
 var countries = ["recent answer 1", "recent answer 2", "test answer"];
 function switchvisibility(x) {
+  if (x.style.visibility == "visible") {
+    x.style.visibility = "hidden";
+    x.style.display = "none";
+  } else {
     x.style.visibility = "visible";
     x.style.display = "block";
+  }
 }
-
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
