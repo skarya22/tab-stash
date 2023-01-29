@@ -1,18 +1,26 @@
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  alert("I am popup!");
+});
+
 // SUMMARIZE BUTTON
 
-document.getElementById("summarize").onclick = function () {
-  switchvisibility(document.getElementById("summaryanswer"));
-  document.getElementById("summaryanswer-input").value =
-    "Material You is Google’s big new theming engine it launched last year alongside Android 12, and it has been spreading to many Android apps since. However, the dynamic interface theming option hasn’t spread beyond Google’s own platforms just yet, with it remaining locked to Android only. The latest Chrome Canary release, version 110, is changing that and brings Material You to Mac, Windows, ChromeOS, and Linux. Since Chrome doesn’t hook into your computer’s desktop wallpaper, it works a little differently than on Android. As spotted by Redditor u/Leopeva64-2, the Chrome interface dynamically takes on the dominant colors from the wallpaper you choose for your new tab page. To make this work, you first need to enable the chrome://flags/#customize-chrome-color-extraction flag.";
-  switchvisibility(document.getElementById("label-input-container"));
-  switchvisibility(document.getElementById("selected-labels-list"));
-};
+if (document.getElementById("summarize").onclick) {
+  document.getElementById("summarize").onclick = function () {
+    switchvisibility(document.getElementById("summaryanswer"));
+    document.getElementById("summaryanswer-input").value =
+      "Material You is Google’s big new theming engine it launched last year alongside Android 12, and it has been spreading to many Android apps since. However, the dynamic interface theming option hasn’t spread beyond Google’s own platforms just yet, with it remaining locked to Android only. The latest Chrome Canary release, version 110, is changing that and brings Material You to Mac, Windows, ChromeOS, and Linux. Since Chrome doesn’t hook into your computer’s desktop wallpaper, it works a little differently than on Android. As spotted by Redditor u/Leopeva64-2, the Chrome interface dynamically takes on the dominant colors from the wallpaper you choose for your new tab page. To make this work, you first need to enable the chrome://flags/#customize-chrome-color-extraction flag.";
+    switchvisibility(document.getElementById("label-input-container"));
+    switchvisibility(document.getElementById("selected-labels-list"));
+  };
+}
 
-document.getElementById("question-button").onclick = function () {
-  switchvisibility(document.getElementById("questionanswer"));
-  switchvisibility(document.getElementById("label-input-container2"));
-  switchvisibility(document.getElementById("selected-labels-list2"));
-};
+if (document.getElementById("question-button")) {
+  document.getElementById("question-button").onclick = function () {
+    switchvisibility(document.getElementById("questionanswer"));
+    switchvisibility(document.getElementById("label-input-container2"));
+    switchvisibility(document.getElementById("selected-labels-list2"));
+  };
+}
 
 document.getElementById("stash1").onclick = function (x) {
   switchToCheck(this);
@@ -23,19 +31,28 @@ document.getElementById("stash2").onclick = function (x) {
 };
 
 var switchToCheck = function (x) {
-  console.log(x);
   x.innerHTML = "check_circle";
   x.style.color = "#4285F4";
 };
 
 // INSERT LABELS IN SUMMARY SECTION
-var labels = ["penguins", "elephants"];
+var labels = [];
 var list = document.getElementById("label-input-list");
-labels.forEach(function (item) {
-  var option = document.createElement("option");
-  option.value = item;
-  list.appendChild(option);
-});
+var list2 = document.getElementById("label-input-list2");
+
+fetch("http://127.0.0.1:8000/label/getLabels/2/")
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((l) => {
+      labels = [...labels, l.name];
+    });
+    labels.forEach(function (item) {
+      var option = document.createElement("option");
+      option.value = item;
+      list.appendChild(option);
+      list2.appendChild(option);
+    });
+  });
 
 var selected_labels = [];
 
@@ -56,13 +73,6 @@ label_input.addEventListener("keypress", function (e) {
 });
 
 // INSERT LABELS IN QUESTION SECTION
-var labels2 = ["penguins", "elephants"];
-var list2 = document.getElementById("label-input-list2");
-labels2.forEach(function (item) {
-  var option = document.createElement("option");
-  option.value = item;
-  list2.appendChild(option);
-});
 
 var selected_labels2 = [];
 
