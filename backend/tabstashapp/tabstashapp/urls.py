@@ -34,7 +34,12 @@ urlpatterns = [
     path('label/createLabel', views.create_label),
     path('stash/createStash', views.create_stash),
 
-    path('label/getLabels/<int:user_id>/', views.get_labels_by_user)
+    path('label/getLabels/<int:user_id>/', views.get_labels_by_user),
+    path('text/getSummary', views.get_summary_from_text),
+    path('text/getQna', views.get_answer_from_text_and_question),
+    path('stash/getStashesByUser/<int:user_id>/', views.get_stashes_by_user),
+    path('stash/getStashesByUserByLabel/<int:user_id>/<int:label_id>/', views.get_stashes_by_user_by_label),
+
 
 
 
