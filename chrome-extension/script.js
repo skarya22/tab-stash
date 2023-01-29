@@ -92,3 +92,8 @@ function switchvisibility(x, switch_display = true) {
     if (switch_display) x.style.display = "block";
   }
 }
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  console.log(request.greeting);
+  sendResponse({ farewell: "ack" });
+});
