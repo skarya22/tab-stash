@@ -43,7 +43,7 @@ class Stash(models.Model):
     date_created = models.DateField()
     
     # many to many relation
-    labels = models.ManyToManyField(Label)
+    labels = models.ManyToManyField(Label, related_name='stashes', blank=True)
 
     def __str__(self) -> str:
         return self.url
