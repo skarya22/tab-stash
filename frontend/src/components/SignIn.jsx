@@ -16,7 +16,7 @@ import Header from "../components/Header";
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn({ setSigningIn }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,7 +25,7 @@ export default function SignIn() {
       password: data.get("password"),
     });
     localStorage.setItem("token", "token");
-    console.log(localStorage.getItem("token"));
+    window.location.reload();
   };
 
   return (
@@ -40,9 +40,17 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            {/* <LockOutlinedIcon /> */}
-          </Avatar>
+          <div>
+            <span
+              class="material-symbols-outlined"
+              style={{
+                fontSize: "50px",
+                color: "#f33535",
+              }}
+            >
+              account_circle
+            </span>
+          </div>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -72,10 +80,6 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
@@ -91,7 +95,12 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link
+                  onClick={() => {
+                    setSigningIn(false);
+                  }}
+                  variant="body2"
+                >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
