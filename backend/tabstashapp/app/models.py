@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Label(models.Model):
 
     # attribute
-    name = models.CharField(max_length=168)
+    name = models.CharField(max_length=168, unique=True)
 
     # foreign key
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -43,7 +43,7 @@ class Stash(models.Model):
     date_created = models.DateField()
     
     # many to many relation
-    labels = models.ManyToManyField(Label)
+    labels = models.ManyToManyField(Label, related_name='stashes', blank=True)
 
     def __str__(self) -> str:
         return self.url
