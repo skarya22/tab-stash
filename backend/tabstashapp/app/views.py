@@ -71,7 +71,7 @@ def get_labels_by_user(request, user_id: int):
 
 
 # GET request to get summarization from a given text
-@api_view(['GET'])
+@api_view(['POST'])
 def get_summary_from_text(request):
     request_body = JSONParser().parse(request)
     text = request_body['text']
@@ -93,7 +93,7 @@ def get_summary_from_text(request):
 # GET request to get qna from a given question and text
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_answer_from_text_and_question(request):
     request_body = JSONParser().parse(request)
     text = request_body['text']
