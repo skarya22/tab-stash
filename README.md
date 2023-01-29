@@ -29,3 +29,16 @@ McHacks 10 Project: Saagar Arya, Jada Thompson, Rui Du and Selena Jin
 
 #### Add .env file to the ./backend folder
 
+
+## To run the application:
+
+#### Start backend server:
+
+> `python backend/tabstashapp/manage.py runserver`
+
+
+#### Start frontend app:
+
+> `cd frontend`
+> `npm start`
+
