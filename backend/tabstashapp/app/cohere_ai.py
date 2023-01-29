@@ -7,7 +7,7 @@ def summmarize(text): #input text of the webpage to put into api (as a string)
         model = "xlarge",
         prompt = "Summarize this text: " + text,
         max_tokens = 50, #length of the summary ~2-3 tokens per word, number of words?
-        temperature = 0.8,
+        temperature = 0.1,
         k = 0,
         p = 1,
         num_generations = 1 
@@ -21,7 +21,7 @@ def qna(text, question): #input webpage as text and question as string
         model = "xlarge",
         prompt = "Answer this question based on the text: " + question + "\n" + " Text: " + text,
         max_tokens = 50,
-        temperature = 0.8,
+        temperature = 0.1,
         k = 0,
         p = 1,
         num_generations = 1
