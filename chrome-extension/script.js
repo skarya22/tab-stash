@@ -7,6 +7,10 @@ document.getElementById("summarize").onclick = function () {
   switchvisibility(document.getElementById("label-input-container"));
 };
 
+document.getElementById("question-button").onclick = function () {
+  switchvisibility(document.getElementById("questionanswer"));
+};
+
 port.onMessage.addListener(function (msg) {
   document.getElementById("highlighted").innerHTML = msg.joke;
   document.getElementById("highlighted").innerText = msg.joke;
@@ -127,6 +131,7 @@ function autocomplete(inp, arr) {
     } else if (e.keyCode == 13) {
       /*If the ENTER key is pressed, prevent the form from being submitted,*/
       e.preventDefault();
+      switchvisibility(document.getElementById("questionanswer"));
       if (currentFocus > -1) {
         /*and simulate a click on the "active" item:*/
         if (x) x[currentFocus].click();

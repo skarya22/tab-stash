@@ -45,15 +45,17 @@
             </div>
         </div>
 
+        <!-- Summary Section -->
         <div class="d-flex justify-content-between" style="margin-bottom: 10px;">
+            <!-- Summarize Button -->
             <button class="btn btn-light horizontal text-center tooltiptext" id="summarize"
                 style="flex:all; flex-direction: row; height: 40px;">
                 <div>Summarize Page</div>
             </button>
 
             <div class="d-flex justify-content-between" id="label-input-container">
-                <!-- Invisible Input -->
-                <input id="label-input" placeholder="Add label(s)..."></input>
+                <!-- Add label input -->
+                <input id="label-input" class="label-input-box" placeholder="Add label(s)..."></input>
                 <!-- Stash result button -->
                 <div class="tooltip2" style="margin-top: 5px; margin-right: 5px">
                     <span class="material-symbols-outlined"
@@ -65,17 +67,38 @@
             </div>
         </div>
 
+        <!-- Summary Result -->
         <div id="summaryanswer" style="visibility: hidden; display: none;">
-            <textarea id="summaryanswer-input" value=""></textarea>
+            <textarea id="summaryanswer-input" class="answer" value=""></textarea>
         </div>
 
+        <!-- Question Input -->
         <div class="input-group mb-3">
             <input type="text" id="question" class="form-control" placeholder="Enter your question here"
                 aria-label="Question" aria-describedby="basic-addon2">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Enter</button>
+                <button class="btn btn-outline-secondary" id = "question-button" type="button">Enter</button>
             </div>
         </div>
+
+        <div class="d-flex justify-content-between" id="label-input-container" class="label-stash-container">
+            <!-- Add label input -->
+            <input id="label-input" class="label-input-box" placeholder="Add label(s)..."></input>
+            <!-- Stash result button -->
+            <div class="tooltip2" style="margin-top: 5px; margin-right: 5px">
+                <span class="material-symbols-outlined"
+                    style="color: white; font-size: 30px; color: #f33535; margin: auto 0;">
+                    archive
+                </span>
+                <span class="tooltiptext2">Stash this result</span>
+            </div>
+        </div>
+        <!-- Question Result -->
+        <div id="questionanswer" style="visibility: hidden; display: none;">
+            <textarea id="questionanswer-input" class="answer"  value=""></textarea>
+        </div>
+
+        <!-- Highlight Section -->
         <div>
             <button class="btn btn-primary" id="savehighlighted">
                 Save Highlighted
