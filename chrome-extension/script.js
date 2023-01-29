@@ -1,4 +1,7 @@
-var port = chrome.runtime.connect({ name: "knockknock" });
+
+
+
+// SUMMARIZE BUTTON
 
 document.getElementById("summarize").onclick = function () {
   switchvisibility(document.getElementById("summaryanswer"));
@@ -7,12 +10,43 @@ document.getElementById("summarize").onclick = function () {
   switchvisibility(document.getElementById("label-input-container"));
 };
 
-port.onMessage.addListener(function (msg) {
-  document.getElementById("highlighted").innerHTML = msg.joke;
-  document.getElementById("highlighted").innerText = msg.joke;
+
+
+
+
+// INSERT LABELS IN SUMMARY SECTION
+var labels = ["penguins", "elephants"];
+var list = document.getElementById('label-input-list');
+labels.forEach(function(item){
+   var option = document.createElement('option');
+   option.value = item;
+   list.appendChild(option);
 });
 
-var labels = ["penguins", "elephants"];
+var selected_labels = []
+
+var label_input = document.getElementById("label-input");
+label_input.addEventListener("keypress", function (e) {
+  if (e.key === 'Enter') {
+    var label = label_input.value;
+    if (label.length > 0) {
+      selected_labels.push(label);
+      var list = document.getElementById('selected-labels-list');
+      var item = document.createElement('li');
+      item.setAttribute("id", "selected-labels-list-item")
+      item.innerHTML = label;
+      list.appendChild(item);
+      label_input.value = "";
+    }
+  }
+})
+
+
+
+
+
+
+// AUTOCOMPLETE
 
 var countries = ["recent answer 1", "recent answer 2", "test answer"];
 function switchvisibility(x) {
