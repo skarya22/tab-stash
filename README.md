@@ -40,5 +40,6 @@ McHacks 10 Project: Saagar Arya, Jada Thompson, Rui Du and Selena Jin
 #### Start frontend app:
 
 > `cd frontend`
+> 'npm install'
 > `npm start`
 
